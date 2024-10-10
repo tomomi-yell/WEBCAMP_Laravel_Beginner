@@ -30,7 +30,8 @@ class TestController extends Controller
         // データの取得
         $validatedData = $request->validated();
 
-        //var_dump($validatedData); exit;
+        var_dump($validatedData); exit;
 
-        return view('test.input', ['datum' => $validatedData]);
+        //return view('test.input');
     }
+}
