@@ -1,37 +1,22 @@
 <?php
-declare(strict_types=1);
-namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Http\Requests\TestPostRequest;
+namespace App\Http\Requests;
 
-class TestController extends Controller
+use Illuminate\Foundation\Http\FormRequest;
+
+class TestPostRequest extends FormRequest
 {
-    /**
-     * トップページ を表示する
-     *
-     * @return \Illuminate\View\View
-     */
-    public function index()
-    {
-        return view('test.index');
-    }
 
     /**
-     * 入力を受け取る
+     * Get the validation rules that apply to the request.
      *
-     * @return \Illuminate\View\View
+     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
-    public function input(TestPostRequest $request)
+    public function rules(): array
     {
-        // validate済
-
-        // データの取得
-        $validatedData = $request->validated();
-
-        var_dump($validatedData); exit;
-
-        //return view('test.input');
+        return [
+            'email' => ['required', 'email', 'max:254'],
+            'password' => ['required', 'max:72'],
+        ];
     }
 }

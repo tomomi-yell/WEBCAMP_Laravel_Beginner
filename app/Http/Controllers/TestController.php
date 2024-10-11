@@ -34,3 +34,4 @@ class TestController extends Controller
 
         return view('test.input', ['datum' => $validatedData]);
     }
+}
