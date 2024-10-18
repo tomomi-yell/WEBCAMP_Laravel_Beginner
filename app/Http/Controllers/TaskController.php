@@ -1,3 +1,29 @@
+<?php
+
+declare(strict_types=1);
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Http\Requests\TaskRegisterPostRequest;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Task as TaskModel;
+
+class TaskController extends Controller
+{
+    /**
+     * タスク一覧ページ を表示する
+     *
+     * @return \Illuminate\View\View
+     */
+    public function list()
+    {
+        // 一覧の取得
+        $list = TaskModel::where('user_id', Auth::id())->get();
+        // $sql = TaskModel::where('user_id', Auth::id())->toSql();
+        // echo "<pre>\n"; var_dump($sql, $list); exit;
+        return view('task.list', ['list' => $list]);
+    }
+
     /**
      * タスクの新規登録
      */
