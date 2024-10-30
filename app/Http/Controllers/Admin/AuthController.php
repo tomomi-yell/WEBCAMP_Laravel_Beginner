@@ -19,7 +19,6 @@ class AuthController extends Controller
     {
         return view('admin.index');
     }
-
     /**
      * ログイン処理
      *
@@ -43,7 +42,6 @@ class AuthController extends Controller
         $request->session()->regenerate();
         return redirect()->intended('/admin/top');
     }
-
     /**
      * ログアウト処理
      *
